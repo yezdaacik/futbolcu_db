@@ -26,7 +26,11 @@ CREATE TABLE IF NOT EXISTS `futbolcu` (
   `takim_id` int(11) NOT NULL DEFAULT 0,
   `mevki_id` int(11) NOT NULL DEFAULT 0,
   `forma_no` tinyint(4) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `FK_futbolcu_takim` (`takim_id`),
+  KEY `FK_futbolcu_mevki` (`mevki_id`),
+  CONSTRAINT `FK_futbolcu_mevki` FOREIGN KEY (`mevki_id`) REFERENCES `mevki` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_futbolcu_takim` FOREIGN KEY (`takim_id`) REFERENCES `takim` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- futbolcu_db.futbolcu: ~0 rows (yaklaşık) tablosu için veriler indiriliyor
